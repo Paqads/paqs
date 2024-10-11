@@ -34,7 +34,32 @@ const App = () => {
     },
     expertise: {
       title: 'Expertise',
-      items: ['Cybersecurity', 'Infrastructure Management', 'Risk Management', 'Network Architecture', 'IAM', 'Process Automation']
+      items: [
+        {
+          title: 'Cybersecurity',
+          description: 'Implementing robust security measures to protect digital assets and information systems.'
+        },
+        {
+          title: 'Infrastructure Management',
+          description: 'Designing and maintaining scalable, efficient IT infrastructures for optimal performance.'
+        },
+        {
+          title: 'Risk Management',
+          description: 'Identifying, assessing, and mitigating potential risks to ensure business continuity.'
+        },
+        {
+          title: 'Network Architecture',
+          description: 'Creating resilient network designs that support organizational goals and growth.'
+        },
+        {
+          title: 'IAM',
+          description: 'Implementing and managing identity and access solutions for enhanced security.'
+        },
+        {
+          title: 'Process Automation',
+          description: 'Streamlining operations through intelligent automation of repetitive tasks and workflows.'
+        }
+      ]
     },
     projects: {
       title: 'Projects',
@@ -89,7 +114,7 @@ const App = () => {
           ))}
           <div className="social-icons">
             <a href="mailto:notifies.sam@gmail.com" aria-label="Email">📧</a>
-            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">💼</a>
+            <a href="https://linkedin.com/in/samson-akintola" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">💼</a>
           </div>
         </div>
       </nav>
@@ -123,7 +148,10 @@ const App = () => {
         {activeSection === 'expertise' && (
           <ul className="expertise-list">
             {content[activeSection].items.map((item, index) => (
-              <li key={index}>{item}</li>
+              <li key={index}>
+              <strong>{item.title}</strong>
+              <p>{item.description}</p>
+              </li>
             ))}
           </ul>
         )}
