@@ -3,41 +3,81 @@ import './App.css';
 
 const App = () => {
   const [activeSection, setActiveSection] = useState('about');
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
   const content = {
     about: {
-      title: 'About',
-      text: 'As a Solution Architect, I specialize in designing elegant, efficient systems that solve complex problems. With a keen eye for detail and a passion for innovation, I transform intricate challenges into streamlined architectures that drive business success.'
+      title: 'About Me',
+      text: `I'm Samson Akintola, a cybersecurity and infrastructure management specialist with a proven track record of enhancing system efficiency, security, and reliability.`,
+      coreExpertise: [
+        'Risk Management',
+        'Infrastructure Design and Optimization',
+        'Identity and Access Management (IAM)',
+        'Cybersecurity Strategy and Implementation',
+        'Network Architecture and Security',
+        'Process Compliance and Automation'
+      ],
+      experienceHighlights: [
+        'Improved system efficiency by 20% and reduced downtime by 25% as a Cyber Security Analyst at Paqads Limited.',
+        'Engineered a network with 99.9% operational efficiency and achieved 100% uptime for critical IT servers at Shamartech Limited.',
+        'Successfully designed and implemented security protocols that increased system integrity and compliance by 20%.',
+        'Reduced configuration errors by 40% through effective management of Puppet Open Source and Enterprise servers.'
+      ],
+      certifications: [
+        'Certified Information Systems Security Professional (CISSP)',
+        'Microsoft Office Specialist (MOS)',
+        'AWS Certified Solutions Architect - Associate',
+        'Computer Technical Support',
+        'Scrum Master Certified (SMC)'
+      ],
+      passion: `I'm passionate about leveraging technology to improve efficiency, security, and productivity. I thrive on finding innovative solutions to complex challenges and am committed to staying at the forefront of industry advancements.`
     },
     expertise: {
       title: 'Expertise',
-      items: ['Cloud Architecture', 'System Design', 'API Development', 'Microservices', 'DevOps Practices', 'Security Architecture', 'Scalable Solutions', 'Data Management']
+      items: ['Cybersecurity', 'Infrastructure Management', 'Risk Management', 'Network Architecture', 'IAM', 'Process Automation']
     },
     projects: {
       title: 'Projects',
       items: [
         {
-          name: 'Enterprise Data Platform',
-          description: 'Designed a scalable platform handling petabytes of data, improving data accessibility and analysis capabilities.'
+          name: 'System Efficiency Improvement',
+          description: 'Improved system efficiency by 20% and reduced downtime by 25% at Paqads Limited.'
         },
         {
-          name: 'Microservices Migration',
-          description: 'Led the architecture for transitioning a monolithic application to a flexible, scalable microservices architecture.'
+          name: 'High-Efficiency Network Engineering',
+          description: 'Engineered a network with 99.9% operational efficiency and 100% uptime for critical IT servers at Shamartech Limited.'
         },
         {
-          name: 'Cloud Migration Strategy',
-          description: 'Developed a comprehensive cloud migration plan for a healthcare provider, ensuring data security and regulatory compliance.'
+          name: 'Security Protocol Implementation',
+          description: 'Designed and implemented security protocols that increased system integrity and compliance by 20%.'
         }
       ]
+    },
+    contact: {
+      title: 'Contact Me',
+      text: 'Feel free to reach out if you have any questions or would like to discuss potential opportunities.'
     }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({ ...prevState, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Form submitted:', formData);
+    // Here you would typically send the form data to a server
+    alert('Thank you for your message. I will get back to you soon!');
+    setFormData({ name: '', email: '', message: '' });
   };
 
   return (
     <div className="app">
       <nav>
         <div className="nav-content">
-          <h1>John Doe</h1>
-          <p className="title">Solution Architect</p>
+          <h1>Samson Akintola</h1>
+          <p className="title">Cybersecurity Specialist</p>
           {Object.keys(content).map(section => (
             <button
               key={section}
@@ -47,11 +87,39 @@ const App = () => {
               {content[section].title}
             </button>
           ))}
+          <div className="social-icons">
+            <a href="mailto:notifies.sam@gmail.com" aria-label="Email">📧</a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">💼</a>
+          </div>
         </div>
       </nav>
       <main>
         <h2>{content[activeSection].title}</h2>
-        {activeSection === 'about' && <p>{content[activeSection].text}</p>}
+        {activeSection === 'about' && (
+          <div className="about-content">
+            <p>{content.about.text}</p>
+            <h3>Core Expertise</h3>
+            <ul>
+              {content.about.coreExpertise.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+            <h3>Experience Highlights</h3>
+            <ul>
+              {content.about.experienceHighlights.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+            <h3>Certifications</h3>
+            <ul>
+              {content.about.certifications.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+            <h3>Passion for Technology</h3>
+            <p>{content.about.passion}</p>
+          </div>
+        )}
         {activeSection === 'expertise' && (
           <ul className="expertise-list">
             {content[activeSection].items.map((item, index) => (
@@ -67,6 +135,46 @@ const App = () => {
                 <p>{project.description}</p>
               </div>
             ))}
+          </div>
+        )}
+        {activeSection === 'contact' && (
+          <div className="contact-content">
+            <p>{content.contact.text}</p>
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label htmlFor="name">Name:</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="email">Email:</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="message">Message:</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  required
+                ></textarea>
+              </div>
+              <button type="submit">Send Message</button>
+            </form>
           </div>
         )}
       </main>
