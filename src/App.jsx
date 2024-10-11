@@ -1,25 +1,24 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 const App = () => {
-  const [activeTab, setActiveTab] = useState('about');
+  const [activeSection, setActiveSection] = useState('about');
 
-  const tabs = {
+  const content = {
     about: {
-      title: 'About Me',
-      content: 'I am a seasoned Solution Architect with expertise in designing scalable and efficient systems. My approach combines technical knowledge with strategic thinking to deliver robust architectural solutions.'
+      title: 'About',
+      text: 'Solution Architect with a passion for creating elegant, efficient systems. I transform complex problems into streamlined architectures.'
     },
-    skills: {
-      title: 'Skills',
-      content: ['Cloud Architecture', 'System Design', 'API Design', 'Microservices', 'DevOps', 'Security Architecture']
+    expertise: {
+      title: 'Expertise',
+      items: ['Cloud Architecture', 'System Design', 'API Development', 'Microservices', 'DevOps', 'Security']
     },
     projects: {
       title: 'Projects',
-      content: [
-        { name: 'Enterprise Data Platform', description: 'Designed a scalable data platform handling petabytes of data for a Fortune 500 company.' },
-        { name: 'Microservices Migration', description: 'Led the architecture for migrating a monolithic application to a microservices-based architecture.' },
-        { name: 'Cloud Migration Strategy', description: 'Developed a comprehensive cloud migration strategy for a healthcare provider, ensuring data security and compliance.' }
+      items: [
+        'Enterprise Data Platform: Scalable solution handling petabytes',
+        'Microservices Migration: Modernizing legacy systems',
+        'Cloud Strategy: Secure, compliant healthcare solutions'
       ]
     }
   };
@@ -27,37 +26,30 @@ const App = () => {
   return (
     <div className="app">
       <header>
-        <h1>Solution Architect Portfolio</h1>
+        <h1>John Doe</h1>
+        <p>Solution Architect</p>
       </header>
       <nav>
-        {Object.keys(tabs).map((tab) => (
-          <button 
-            key={tab} 
-            onClick={() => setActiveTab(tab)}
-            className={activeTab === tab ? 'active' : ''}
+        {Object.keys(content).map(section => (
+          <button
+            key={section}
+            className={activeSection === section ? 'active' : ''}
+            onClick={() => setActiveSection(section)}
           >
-            {tabs[tab].title}
+            {content[section].title}
           </button>
         ))}
       </nav>
       <main>
-        {activeTab === 'about' && <p>{tabs.about.content}</p>}
-        {activeTab === 'skills' && (
+        <h2>{content[activeSection].title}</h2>
+        {activeSection === 'about' ? (
+          <p>{content[activeSection].text}</p>
+        ) : (
           <ul>
-            {tabs.skills.content.map((skill, index) => (
-              <li key={index}>{skill}</li>
+            {content[activeSection].items.map((item, index) => (
+              <li key={index}>{item}</li>
             ))}
           </ul>
-        )}
-        {activeTab === 'projects' && (
-          <div>
-            {tabs.projects.content.map((project, index) => (
-              <div key={index} className="project">
-                <h3>{project.name}</h3>
-                <p>{project.description}</p>
-              </div>
-            ))}
-          </div>
         )}
       </main>
     </div>
