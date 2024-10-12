@@ -124,9 +124,33 @@ p {
   color: #666;
 }
 
+.expertise-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.expertise-intro {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #555;
+}
+
+.expertise-area {
+  margin-bottom: 40px;
+}
+
+.expertise-area h3 {
+  font-size: 1.8em;
+  color: #333;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
 .expertise-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 25px;
   padding: 0;
 }
@@ -139,7 +163,6 @@ p {
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  list-style-type: none;
 }
 
 .expertise-list li:before {
@@ -165,15 +188,55 @@ p {
 
 .expertise-list li strong {
   display: block;
-  font-size: 1.1em;
-  margin-bottom: 8px;
+  font-size: 1.2em;
+  margin-bottom: 10px;
   color: #333;
 }
 
 .expertise-list li p {
-  font-size: 0.9em;
+  font-size: 0.95em;
   color: #666;
   margin: 0;
+}
+
+.expertise-combination {
+  background-color: #f9f9f9;
+  padding: 30px;
+  border-radius: 8px;
+  margin-top: 40px;
+}
+
+.expertise-combination h3 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.expertise-combination ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.expertise-combination li {
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.expertise-combination li:before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .expertise-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .expertise-combination {
+    padding: 20px;
+  }
 }
 
 .projects-grid {
