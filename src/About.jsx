@@ -4,7 +4,7 @@ const About = () => {
   return (
     <div className="about-content">
       <div className="about-image-container">
-        <img src="/path/to/your/image.jpg" alt="Samson Akintola" className="about-image" />
+        <img src="/Users/manager/staticwebsite/public/images/samson-akintola.jpg" alt="Samson Akintola" className="about-image" />
         <div className="image-overlay">
           <p>Samson Akintola</p>
           <p>Cybersecurity Specialist</p>
