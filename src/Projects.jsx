@@ -17,7 +17,7 @@ const Projects = () => {
   ];
 
   return (
-    <div className="projects-grid">
+    <div className="projects-grid project-card">
       {projects.map((project, index) => (
         <div key={index} className="project-card">
           <h3>{project.name}</h3>

@@ -17,7 +17,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="contact-content">
+    <div className="contact-content contact-form">
       <p>Feel free to reach out if you have any questions or would like to discuss potential opportunities.</p>
       <form onSubmit={handleSubmit}>
         <div className="form-group">

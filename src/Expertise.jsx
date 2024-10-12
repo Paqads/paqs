@@ -53,7 +53,7 @@ const Expertise = () => {
   };
 
   return (
-    <div className="expertise-content">
+    <div className="expertise-content expertise-card">
       <p className="expertise-intro">{content.intro}</p>
       {content.areas.map((area, index) => (
         <div key={index} className="expertise-area">

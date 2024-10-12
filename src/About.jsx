@@ -2,7 +2,7 @@ import React from 'react';
 
 const About = () => {
   return (
-    <div className="row">
+    <div className="row about-content">
       <div className="col-md-4 mb-4">
         <div className="about-image-container">
           <img src="/path/to/your/image.jpg" alt="Samson Akintola" className="img-fluid rounded-circle" />
