@@ -23,29 +23,31 @@ const App = () => {
   return (
     <div className="container-fluid">
       <div className="row">
-        <nav className="col-md-3 col-lg-2 bg-light sidebar p-3">
-          <h1 className="h4 mb-3">Samson Akintola</h1>
-          <p className="text-muted">Cybersecurity Specialist</p>
-          <ul className="nav flex-column">
+        <nav className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+          <div className="sidebar-header">
+            <h1>Samson Akintola</h1>
+            <p className="title">Cybersecurity Specialist</p>
+          </div>
+          <div className="nav-menu">
             {['about', 'expertise', 'projects', 'blog', 'contact'].map(section => (
-              <li className="nav-item" key={section}>
+              <div className="nav-item" key={section}>
                 <button
-                  className={`nav-link btn btn-link text-start p-0 ${activeSection === section ? 'active' : ''}`}
+                  className={`nav-link ${activeSection === section ? 'active' : ''}`}
                   onClick={() => setActiveSection(section)}
                 >
-                  {section.charAt(0).toUpperCase() + section.slice(1)}
+                  <span>{section.charAt(0).toUpperCase() + section.slice(1)}</span>
                 </button>
-              </li>
+              </div>
             ))}
-          </ul>
-          <div className="mt-3">
-            <a href="mailto:notifies.sam@gmail.com" className="me-2 text-decoration-none" aria-label="Email">📧</a>
-            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="text-decoration-none" aria-label="LinkedIn">💼</a>
+          </div>
+          <div className="social-icons">
+            <a href="mailto:notifies.sam@gmail.com" aria-label="Email">📧</a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">💼</a>
           </div>
         </nav>
 
         <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-          <h2 className="my-4">{activeSection.charAt(0).toUpperCase() + activeSection.slice(1)}</h2>
+          <h2 className="mt-4">{activeSection.charAt(0).toUpperCase() + activeSection.slice(1)}</h2>
           {renderSection()}
         </main>
       </div>
